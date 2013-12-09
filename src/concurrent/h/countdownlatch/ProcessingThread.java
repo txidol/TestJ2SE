@@ -2,7 +2,10 @@ package concurrent.h.countdownlatch;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <p>Copyright:Copyright(c)2013</p>
@@ -15,7 +18,7 @@ import java.util.concurrent.CountDownLatch;
 public class ProcessingThread extends Thread {
 	private final String ident;
 	private final CountDownLatch latch;
-	private static int MAX_THREADS = 7;
+	private static int MAX_THREADS = 17;
 	
 	public ProcessingThread(String ident_, CountDownLatch cdl_) {
 		ident = ident_;
@@ -31,7 +34,16 @@ public class ProcessingThread extends Thread {
 	}
 
 	public void run() {
+		
+
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		initialize();
+		 System.out.println(ident + "|"+latch.getCount());
 	}
 	
 	public static void main(String[] a) {
@@ -45,7 +57,7 @@ public class ProcessingThread extends Thread {
 	    		            "localhost:" + (9000 + i), cdl);
 	    		 nodes.add(local);
 	    		 local.start();
-	    		 System.out.println("localhost:" + (9000 + i) + "|"+cdl.getCount());
+	    		 //System.out.println("localhost:" + (9000 + i) + "|"+cdl.getCount());
 			}
 			cdl.await();
 			System.out.println(cdl.getCount());
@@ -54,21 +66,5 @@ public class ProcessingThread extends Thread {
 		}finally{
 			
 		}
-//	    final int quorum = 1 + (int) (MAX_THREADS / 2);
-//	    final CountDownLatch cdl = new CountDownLatch(quorum);
-//
-//	    final Set<ProcessingThread> nodes = new HashSet<>();
-//	    try {
-//	      for (int i = 0; i < MAX_THREADS; i++) {
-//	        ProcessingThread local = new ProcessingThread(
-//	            "localhost:" + (9000 + i), cdl);
-//	        nodes.add(local);
-//	        local.start();
-//	      }
-//	      cdl.await();
-//	    } catch (InterruptedException e) {
-//
-//	    } finally {
-//	    }
 	}
 }
