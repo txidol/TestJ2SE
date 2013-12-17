@@ -1,3 +1,4 @@
+/xml
 /autopackage
 /com
 /concurrent
@@ -14,5 +15,3 @@
 /pattern
 /problem
 /reflect
-/testUtil
-/util
