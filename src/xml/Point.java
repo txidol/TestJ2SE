@@ -13,8 +13,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Point {
 	
-	private int x;
-	private int y;
+	private Integer x;
+	private Integer y;
 	private String name;
 	
 	public int getX() {
