@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class SclistInfo 
 {
 	private String key = ""; //标准编码list名
-	private ArrayList sclist = new ArrayList(); //标准编码list值
+	private ArrayList<?> sclist = new ArrayList<Object>(); //标准编码list值
 	
 
 	public String getKey() {
@@ -26,11 +26,11 @@ public class SclistInfo
 		this.key = key;
 	}
 
-	public ArrayList getSclist() {
+	public ArrayList<?> getSclist() {
 		return sclist;
 	}
 
-	public void setSclist(ArrayList sclist) {
+	public void setSclist(ArrayList<?> sclist) {
 		this.sclist = sclist;
 	}	
 	

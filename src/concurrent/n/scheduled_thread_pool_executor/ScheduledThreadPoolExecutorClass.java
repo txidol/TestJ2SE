@@ -39,6 +39,7 @@ public class ScheduledThreadPoolExecutorClass {
 		hndl =stpe.scheduleAtFixedRate(msgReader, 10, 10, TimeUnit.MILLISECONDS);
 	}
 	
+	@SuppressWarnings("unused")
 	private void cancel(){
 		final ScheduledFuture<?> myHndl = hndl;
 		

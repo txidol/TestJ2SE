@@ -12,7 +12,11 @@ package com.mopon.util.out;
  */
 public class ExtendUnCheckException extends RuntimeException {
 
-    private String errorCode;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5419771093000221587L;
+	private String errorCode;
 
 	public ExtendUnCheckException() {
 		super();

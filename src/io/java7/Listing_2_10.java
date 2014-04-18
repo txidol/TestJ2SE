@@ -24,7 +24,8 @@ public class Listing_2_10 {
       
       socketChannel.setOption(StandardSocketOptions.IP_TOS, 3);
       //System.out.println(socketChannel.getOption(StandardSocketOptions.IP_TOS));
-      Boolean keepAlive = socketChannel
+      @SuppressWarnings("unused")
+	Boolean keepAlive = socketChannel
           .getOption(StandardSocketOptions.SO_KEEPALIVE);
      // System.out.println(keepAlive);
      

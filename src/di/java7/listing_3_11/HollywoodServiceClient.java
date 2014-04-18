@@ -17,7 +17,8 @@ public class HollywoodServiceClient {
     Injector injector = Guice.createInjector(new AgentFinderModule());
     HollywoodServiceGuice hollywoodService = injector
         .getInstance(HollywoodServiceGuice.class);
-    List<Agent> agents = hollywoodService.getFriendlyAgents();
+    @SuppressWarnings("unused")
+	List<Agent> agents = hollywoodService.getFriendlyAgents();
     // Do stuff with agents.
   }
 

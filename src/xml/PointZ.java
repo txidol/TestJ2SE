@@ -1,7 +1,6 @@
 package xml;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlValue;
 
 /**
  * <p>Copyright:Copyright(c)2013</p>

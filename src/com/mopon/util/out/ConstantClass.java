@@ -11,8 +11,6 @@
 */
 package com.mopon.util.out;
 
-import java.io.File;
-
 
 public interface ConstantClass {	
 	

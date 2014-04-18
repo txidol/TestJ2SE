@@ -18,6 +18,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
 import com.sun.org.apache.xml.internal.serialize.OutputFormat;
 import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 
@@ -31,7 +32,7 @@ public class XmlUtil {
 	 * 功能：写xml的通用函数。
 	 * 参数：待写xlm的路径及文件名，字段名的list，各行数据的list
 	 */
-	public static void writeXMLFile(String outFile,List m_fieldsList, List m_rowsDataList) throws Exception
+	public static void writeXMLFile(String outFile,List<?> m_fieldsList, List<?> m_rowsDataList) throws Exception
 	{
 		if(m_rowsDataList!=null && m_rowsDataList.size()>0){
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -46,13 +47,13 @@ public class XmlUtil {
 		    //在doc中创建根节点
 		    Element root=doc.createElement("ROOT");
 		    doc.appendChild(root); 
-		    List tmpList;
+		    List<?> tmpList;
 		    for(int i=0; i<m_rowsDataList.size(); i++){
 		    	Element rowNode=doc.createElement("row");
 		    	root.appendChild(rowNode);
 		    	
 		    	//取到各行数据的列表
-		    	tmpList = (List)m_rowsDataList.get(i);
+		    	tmpList = (List<?>)m_rowsDataList.get(i);
 	   
 		    	Element rowCell;
 		    	for(int j=0; j<tmpList.size(); j++){ System.out.println("==writeXMLFile(),j="+j+",tmpList.get(j)="+tmpList.get(j));
@@ -90,9 +91,10 @@ public class XmlUtil {
 	 * 参数：待读xlm的路径及文件名；
 	 * 返回值：各行数据的list
 	 */
-	public static List readXML(String fileURI){
-		List reList = new ArrayList();//各行数据的list
-		List rowDataList = new ArrayList();//中间变量，xml中一行数据的list
+	@SuppressWarnings("rawtypes")
+	public static List<List> readXML(String fileURI){
+		List<List> reList = new ArrayList<List>();//各行数据的list
+		List<String> rowDataList = new ArrayList<String>();//中间变量，xml中一行数据的list
 		try{    
 		    File f = new File(fileURI);    
 		    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();    
@@ -101,7 +103,7 @@ public class XmlUtil {
 		    NodeList nodeListRows = doc.getElementsByTagName("row");    
 
 		    for(int i = 0; i<nodeListRows.getLength(); i++) {  
-		    	rowDataList = new ArrayList();
+		    	rowDataList = new ArrayList<String>();
 			    NodeList nodeListFields = ((Element)nodeListRows.item(i)).getElementsByTagName("field");    
 			    for(int j=0; j<nodeListFields.getLength(); j++){
 			    	//System.out.println("readXMLFile(),i="+i+",j="+j);

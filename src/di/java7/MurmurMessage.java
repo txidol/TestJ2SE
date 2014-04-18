@@ -9,6 +9,7 @@ import com.google.inject.Provider;
 class MurmurMessage {
   boolean someGlobalCondition = true;
 
+  @SuppressWarnings("unused")
   @Inject
   MurmurMessage(Provider<Message> messageProvider) {
     Message msg1 = messageProvider.get();

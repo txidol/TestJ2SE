@@ -15,7 +15,7 @@
  */
 package exception;
 
-import junit.framework.Assert;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -47,7 +47,7 @@ public class TestErrorCodeException {
 		} catch (ErrorCodeException e) {
 			e.printStackTrace();			
 			System.out.println("如果：" + e.getMessage() + " 怎么做");
-			Assert.assertEquals("空数据", e.getMessage());
+			assertEquals("空数据", e.getMessage());
 		}
 	}
     @Test

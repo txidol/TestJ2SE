@@ -47,6 +47,7 @@ public abstract class OperateXML {
 	 *              属性name的值作为Map的key;PageInfo对象实例作为value。
 	 * @return Map
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Map readxml(){
 		Element root = config.getDocumentElement();
 		NodeList nl = root.getElementsByTagName("page");
@@ -113,6 +114,7 @@ public abstract class OperateXML {
 	 * @param str: 类中的属性名
 	 * @return String
 	 */
+	@SuppressWarnings("unused")
 	private static String pickGetMethordName(String str){
 		str = "get" + str.substring(0,1).toUpperCase() + (str.toLowerCase()).substring(1,str.length());
 		return str;
@@ -133,6 +135,7 @@ public abstract class OperateXML {
 	 *              属性name的值作为Map的key;SclistInfo对象实例作为value。
 	 * @return Map
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Map readxml_sclist(){
 		Element root = config.getDocumentElement();
 		NodeList nl = root.getElementsByTagName("sclist");	
@@ -178,7 +181,7 @@ public abstract class OperateXML {
 		   		Text tName = (Text)elName.getFirstChild();     
 		   		dto.setName(tName.getNodeValue());
 		   		
-		   		((SclistInfo)obj).getSclist().add(dto);
+		   		//((SclistInfo)obj).getSclist().add(dto);
 			}
 			return obj;
 		}
@@ -188,11 +191,11 @@ public abstract class OperateXML {
 		}
 	}
 	
-	public static Map readxml_path(){
+	public static Map<String, String> readxml_path(){
 		Element root = config.getDocumentElement();
 		NodeList nl = root.getElementsByTagName("path");
 		
-		Map map = new HashMap();			
+		Map<String, String> map = new HashMap<String, String>();			
 		try {
 			for (int i = 0; i < nl.getLength(); i++) {
 				Element element1 = (Element) nl.item(i);

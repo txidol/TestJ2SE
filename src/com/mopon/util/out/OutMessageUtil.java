@@ -1,7 +1,6 @@
 package com.mopon.util.out;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -14,14 +13,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-import com.mopon.util.out.message.AreaMessage;
-import com.mopon.util.out.message.BodyMessage;
 import com.mopon.util.out.message.HeaderMessage;
 import com.mopon.util.out.message.Message;
 
@@ -65,6 +61,7 @@ public class OutMessageUtil {
 	Document doc = reader.read(xml);
 	Element root = doc.getRootElement();
 	// readNode(root, "");
+	@SuppressWarnings("unused")
 	Message message = read(root);
 	return null;
     }

@@ -6,7 +6,6 @@ import java.net.InetSocketAddress;
 import java.net.NetworkInterface;
 import java.net.StandardProtocolFamily;
 import java.net.StandardSocketOptions;
-
 import java.nio.channels.DatagramChannel;
 import java.nio.channels.MembershipKey;
 
@@ -23,7 +22,8 @@ public class Listing_2_11 {
       //dc.setOption(StandardSocketOptions.IP_MULTICAST_IF, networkInterface);
       dc.setOption(StandardSocketOptions.IP_MULTICAST_IF, networkInterface);
       InetAddress group = InetAddress.getByName("192.168.8.93");
-      MembershipKey key = dc.join(group, networkInterface);
+      @SuppressWarnings("unused")
+	MembershipKey key = dc.join(group, networkInterface);
     } catch (IOException e) {
     	e.printStackTrace();
       System.out.println(e.getMessage());

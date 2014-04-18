@@ -10,7 +10,8 @@ import di.java7.AgentFinder;
  */
 public class HollywoodService {
 
-  private AgentFinder finder = null;
+  @SuppressWarnings("unused")
+private AgentFinder finder = null;
 
   @Inject
   public HollywoodService(@Named("primary") AgentFinder finder) {

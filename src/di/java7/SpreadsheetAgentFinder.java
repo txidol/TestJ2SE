@@ -12,6 +12,7 @@ public class SpreadsheetAgentFinder implements AgentFinder {
   private String type;
 
   /** The location of the spreadsheet */
+  @SuppressWarnings("unused")
   private String path;
 
   /**
