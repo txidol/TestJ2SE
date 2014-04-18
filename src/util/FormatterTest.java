@@ -22,6 +22,7 @@ public class FormatterTest {
 		formatter = new Formatter(sb,Locale.US);		 
 	}
 	
+	//字符串填充、注意顺序
 	@Test
 	public void demoTest(){	
 		 formatter = formatter.format("%4$2s %3$2s %2$2s %1$2s",
@@ -29,21 +30,23 @@ public class FormatterTest {
 		 assertEquals(" d  c  b  a", formatter.toString()); 	
 	}
 	
+	//数字填充，注意空格，加号，逗号
 	@Test
 	public void demoTest1(){
 		 formatter = formatter.format(Locale.FRANCE, "e = %+10.4f", Math.E);
 		 assertEquals("e =    +2,7183", formatter.toString()); 
 	}
 	
+	//浮点型数字填充，注意负号处理，逗号，小数点，括号
 	@Test
-	public void demoTest2(){
-	
+	public void demoTest2(){	
 		 formatter =   formatter.format("Amount gained or lost since last statement: $ %(,.2f",
 				 -6217.58F);
 		 assertEquals("Amount gained or lost since last statement: $ (6,217.58)", 
 				 formatter.toString()); 
 	}
 	
+	//系统格式化输出
 	@Test
 	public void demoTest3System(){
 		   // Writes a formatted string to System.out.
@@ -57,6 +60,7 @@ public class FormatterTest {
 
 	}
 	
+	//处理日期
 	@Test
 	public void demoTest4String(){
 		  Calendar c = new GregorianCalendar(1995, MAY, 23);
@@ -64,10 +68,5 @@ public class FormatterTest {
 		  assertEquals("Duke's Birthday: 05 23, 1995", s); 
 	}
 	
-	@Test
-	public void demoTest4Date(){
-		  Calendar c = new GregorianCalendar(1995, MAY, 23);
-		  String s = String.format("Duke's Birthday: %1$tm %1$te, %1$tY", c);
-		  assertEquals("Duke's Birthday: 05 23, 1995", s); 
-	}
+	
 }
